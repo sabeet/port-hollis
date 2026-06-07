@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
+import PageTransition from "./PageTransition"
 
 function PostPage() {
   const { filename } = useParams()
@@ -13,11 +14,13 @@ function PostPage() {
   }, [filename])
 
   return (
-    <main className="max-w-2xl mx-auto px-4 py-12">
-    <div className="prose">
-        <ReactMarkdown>{content}</ReactMarkdown>
-    </div>
-</main>
+    <PageTransition>
+      <main className="max-w-2xl mx-auto px-4 py-12">
+        <div className="prose">
+            <ReactMarkdown>{content}</ReactMarkdown>
+        </div>
+      </main>
+    </PageTransition>
   )
 }
 

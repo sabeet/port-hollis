@@ -3,6 +3,7 @@ import Header from "./components/Header"
 import Post from "./components/Post"
 import { Routes, Route } from 'react-router-dom'
 import PostPage from './components/PostPage'
+import PageTransition from "./components/PageTransition"
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -24,19 +25,25 @@ function App() {
   }, [])
 
 return (
+  <>
+  <div className="max-w-2xl mx-auto px-4 py-12" >
+  <Header />
+  </div>
   <Routes>
     <Route path="/" element={
-      <main className="max-w-2xl mx-auto px-4 py-12">
-        <Header />
-        <ul className="space-y-10">
-          {posts.map(post => (
-            <Post key={post.id} title={post.title} date={post.date} filename={post.filename} />
-          ))}
-        </ul>
-      </main>
+      <PageTransition>
+        <main className="max-w-2xl mx-auto px-4 py-12">
+          <ul className="space-y-10">
+            {posts.map(post => (
+              <Post key={post.id} title={post.title} date={post.date} filename={post.filename} />
+            ))}
+          </ul>
+        </main>
+      </PageTransition>
     } />
     <Route path="/posts/:filename" element={<PostPage />} />
   </Routes>
+  </>
 )
 }
 
