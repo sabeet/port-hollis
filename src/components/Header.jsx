@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import blogTitlePath from "../constants/blogTitlePath"
+import { Link } from 'react-router-dom'
 
 const draw = {
   hidden: { pathLength: 0, opacity: 1 },
@@ -12,24 +13,24 @@ const draw = {
 
 function Header() {
   return (
-    <header className="mb-10">
-      <motion.svg
-        width="362.279"
-        height="102.5"
-        viewBox="0 0 362.279 102.5"
-        xmlns="http://www.w3.org/2000/svg"
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.path
-          d={blogTitlePath}
-          stroke="black"
-          strokeWidth="1"
-          fill="transparent"
-          variants={draw}
-        />
+    <header className="mb-4 flex flex-col items-left">
+      <Link to="/">
+        <motion.svg
+          className="w-full max-w-xs"
+          viewBox="0 0 225 90"
+          xmlns="http://www.w3.org/2000/svg"
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.path
+            d={blogTitlePath}
+            stroke="black"
+            strokeWidth="1"
+            fill="transparent"
+            variants={draw}
+          />
       </motion.svg>
-      <p className="text-gray-500 mt-2">Thoughts, writing, and whatever else.</p>
+      </Link>
     </header>
   )
 }
