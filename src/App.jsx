@@ -6,6 +6,8 @@ import PostPage from './components/PostPage'
 import PageTransition from "./components/PageTransition"
 import { AnimatePresence } from "framer-motion"
 import ParseFrontmatter from './utils/ParseFrontmatter'
+import Footer from "./components/Footer"
+import StackPage from './components/StackPage'
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -34,8 +36,8 @@ function App() {
   }, [])
 
   return (
-    <>
-      <div className="max-w-2xl mx-auto px-4 pt-4 pb-2">
+    <div className="min-h-screen flex flex-col">
+      <div className="max-w-2xl mx-auto px-4 pt-4 pb-2 w-full">
         <Header />
       </div>
       <AnimatePresence mode="wait">
@@ -52,9 +54,11 @@ function App() {
             </PageTransition>
           } />
           <Route path="/posts/:filename" element={<PostPage />} />
+          <Route path="/stack" element={<StackPage />} />
         </Routes>
       </AnimatePresence>
-    </>
+      <Footer />
+    </div>
   )
 }
 

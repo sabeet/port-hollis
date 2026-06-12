@@ -1,2 +1,15 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@keyframes glitch {
+  0%   { transform: translate(0); filter: none; }
+  20%  { transform: translate(-3px, 0) skewX(-2deg); filter: drop-shadow(3px 0 0 red) drop-shadow(-3px 0 0 cyan); }
+  40%  { transform: translate(3px, 0) skewX(2deg); filter: drop-shadow(-3px 0 0 red) drop-shadow(3px 0 0 cyan); }
+  60%  { transform: translate(-3px, 0) skewX(-2deg); filter: drop-shadow(3px 0 0 red) drop-shadow(-3px 0 0 cyan); }
+  80%  { transform: translate(3px, 0) skewX(2deg); filter: drop-shadow(-3px 0 0 red) drop-shadow(3px 0 0 cyan); }
+  100% { transform: translate(0); filter: none; }
+}
+
+.glitch:hover {
+  animation: glitch 0.4s ease forwards;
+}
