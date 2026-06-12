@@ -4,7 +4,7 @@ A minimal markdown blog built with React, Vite, and Tailwind CSS. Posts are writ
 ## Features
 
 - Posts fetched live from a GitHub repository
-- Frontmatter parsing for post titles and dates
+- Custom frontmatter parsing for post titles and dates
 - Animated SVG logo with hover/tap glitch effect
 - Smooth page transitions with Framer Motion
 - Previous/Next post navigation
