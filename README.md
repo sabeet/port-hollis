@@ -1,16 +1,29 @@
-# React + Vite
+# Port Hollis
+A minimal markdown blog built with React, Vite, and Tailwind CSS. Posts are written as markdown files and are fetched directly from the [md-collection-blog repo](https://github.com/sabeet/md-collection-blog).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
 
-Currently, two official plugins are available:
+- Posts fetched live from a GitHub repository
+- Frontmatter parsing for post titles and dates
+- Animated SVG logo with hover/tap glitch effect
+- Smooth page transitions with Framer Motion
+- Previous/Next post navigation
+- Fully responsive layout
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+- React + Vite
+- React Router
+- Tailwind CSS v4
+- Framer Motion
+- React Markdown
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
+```bash
+git clone https://github.com/sabeet/port-hollis.git
+cd react-md-blog
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+#### feel free to fork and adapt.
