@@ -13,3 +13,17 @@
 .glitch:hover {
   animation: glitch 0.4s ease forwards;
 }
+
+@keyframes title-glitch {
+  0%   { transform: translate(0); filter: none; }
+  20%  { transform: translate(-2px, 0) skewX(-3deg); filter: drop-shadow(2px 0 0 red) drop-shadow(-2px 0 0 cyan); }
+  40%  { transform: translate(2px, 0) skewX(3deg); filter: drop-shadow(-2px 0 0 red) drop-shadow(2px 0 0 cyan); }
+  60%  { transform: translate(-2px, 0) skewX(-3deg); filter: drop-shadow(2px 0 0 red) drop-shadow(-2px 0 0 cyan); }
+  80%  { transform: translate(2px, 0) skewX(3deg); filter: drop-shadow(-2px 0 0 red) drop-shadow(2px 0 0 cyan); }
+  100% { transform: translate(0); filter: none; }
+}
+
+.title-glitch {
+  animation: title-glitch 0.6s ease forwards;
+}
+

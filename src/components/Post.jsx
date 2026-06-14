@@ -1,15 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import rightArrowPath from '../constants/RightArrowPath'
-
-const draw = {
-  hidden: { pathLength: 0, opacity: 1 },
-  visible: {
-    pathLength: 1,
-    opacity: 1,
-    transition: { duration: 5, ease: "easeInOut" }
-  }
-}
+import draw from '../utils/Draw'
 
 function Post({ title, date, filename }) {
   const num = filename.replace(".md", "")
@@ -24,11 +16,13 @@ function Post({ title, date, filename }) {
           transition={{ duration: 0.6, ease: "easeOut" }}
           style={{ WebkitTextStroke: "1px black", color: "transparent" }}
         >
+          <Link to={`/posts/${filename}`} >
           {num}
+          </Link>
         </motion.div>
         <div className="w-2/3">
           <p className="text-sm text-gray-400">{date}</p>
-          <h2 className="text-2xl font-semibold mt-1">{title}</h2>
+          <h2 className="text-2xl font-semibold mt-1">{title.toLowerCase()}</h2>
           
           <Link to={`/posts/${filename}`} >
             <motion.svg
@@ -43,7 +37,7 @@ function Post({ title, date, filename }) {
               stroke="black"
               strokeWidth="1"
               fill="transparent"
-              variants={draw}
+              variants={draw(2)}
             />
             </motion.svg>
           </Link>

@@ -1,15 +1,7 @@
 import { motion } from "framer-motion"
 import blogTitlePath from "../constants/blogTitlePath"
 import { Link } from 'react-router-dom'
-
-const draw = {
-  hidden: { pathLength: 0, opacity: 1 },
-  visible: {
-    pathLength: 1,
-    opacity: 1,
-    transition: { duration: 10, ease: "easeInOut" }
-  }
-}
+import draw from '../utils/Draw'
 
 function Header() {
   return (
@@ -28,7 +20,7 @@ function Header() {
               stroke="black"
               strokeWidth="1"
               fill="transparent"
-              variants={draw}
+              variants={draw(10)}
             />
           </motion.svg>
         </Link>
