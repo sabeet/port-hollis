@@ -12,6 +12,7 @@ function PostPage() {
   const [title, setTitle] = useState("")
   const [totalPosts, setTotalPosts] = useState(null)
   const [showUpper, setShowUpper] = useState(false)
+  const [lastEdited, setLastEdited] = useState("")
 
   const currentNum = parseInt(filename.replace(".md", ""))
   const prevFile = `${String(currentNum - 1).padStart(2, "0")}.md`
@@ -27,6 +28,20 @@ function PostPage() {
         setTitle(attributes.title)
       })
 
+    fetch(`https://api.github.com/repos/sabeet/md-collection-blog/commits?path=repo/${filename}&per_page=1`)
+      .then(res => res.json())
+      .then(commits => {
+        if (commits.length > 0) {
+          const raw = commits[0].commit.committer.date
+          const formatted = new Date(raw).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          })
+          setLastEdited(formatted)
+        }
+      })
+
     fetch("https://api.github.com/repos/sabeet/md-collection-blog/contents/repo")
       .then(res => res.json())
       .then(files => setTotalPosts(files.length))
@@ -40,11 +55,11 @@ function PostPage() {
   }, [title])
 
   const capitalizeTitle = (str) => {
-    const prepositions = ['a', 'an', 'the', 'and', 'but', 'or', 'for', 'nor', 
+    const prepositions = ['a', 'an', 'the', 'and', 'but', 'or', 'for', 'nor',
                           'on', 'at', 'to', 'by', 'in', 'of', 'up', 'as', 'is']
-    
+
     return str.split(' ').map((word, index) => {
-      if (index === 0) return word // first word always stays lowercase for glitch effect
+      if (index === 0) return word
       if (prepositions.includes(word.toLowerCase())) return word.toLowerCase()
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
     }).join(' ')
@@ -69,7 +84,10 @@ function PostPage() {
             {restOfTitle}
           </h1>
           <hr className="border-black mb-2" />
-          <p className="text-sm text-gray-400 mb-8">{date}</p>
+          <div className="text-sm text-gray-400 mb-8 flex justify-between">
+            <p>Posted: {date}</p>
+            {lastEdited && <p>Last Edited: {lastEdited}</p>}
+          </div> 
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
 
